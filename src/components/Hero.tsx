@@ -103,7 +103,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-6xl md:text-8xl lg:text-[110px] font-black tracking-tighter mb-6 leading-[0.9]"
+            className="text-6xl md:text-8xl lg:text-[110px] font-bold tracking-[-0.04em] mb-6 leading-[0.9]"
           >
             LOOFI<br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">DEV</span>
           </motion.h1>
@@ -112,9 +112,9 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-gray-400 mb-10 max-w-2xl font-light leading-relaxed lg:border-l-2 lg:border-cyan-500/30 lg:pl-6 mx-auto lg:mx-0"
+            className="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl font-medium leading-relaxed lg:border-l-2 lg:border-cyan-500/30 lg:pl-6 mx-auto lg:mx-0"
           >
-            Potenciando el <strong className="text-white">Futuro Digital</strong> de tu Negocio. Transformamos ideas complejas en arquitecturas altamente escalables.
+            Potenciando el <strong className="text-white font-bold">Futuro Digital</strong> de tu Negocio. Transformamos ideas complejas en arquitecturas altamente escalables.
           </motion.p>
           
           <motion.div 

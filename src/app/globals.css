@@ -5,6 +5,8 @@
   --color-neon-cyan: #00ffcc;
   --color-gold-accent: #ffb800;
   --color-deep-black: #0a0a0b;
+  --font-sans: var(--font-apple);
+  --font-mono: var(--font-apple-mono);
 }
 
 :root {
@@ -15,10 +17,36 @@
 }
 
 @layer base {
+  :root {
+    --font-apple: "SF Pro Display", "SF Pro Icons", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Helvetica", "Arial", var(--font-inter), sans-serif;
+    --font-apple-mono: "sf mono", "ui-mono", "SF Mono", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", monospace;
+  }
+
   body {
     background-color: var(--deep-black);
-    color: #e2e8f0;
+    color: #f5f5f7; /* Apple's off-white for dark mode */
+    font-family: var(--font-apple);
+    font-weight: 450; /* Increased from default for more presence */
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.015em; /* Slightly tighter for weight balance */
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700; /* More pronounced headings */
+    letter-spacing: -0.025em; /* Tighter for heavy weights */
+    color: #ffffff;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    line-height: 1.05;
+  }
+
+  h2 {
+    font-size: clamp(1.75rem, 5vw, 3rem);
+    line-height: 1.1;
   }
 }
 

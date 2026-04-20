@@ -5,7 +5,11 @@ import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import SmokeEffect from "@/components/SmokeEffect";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ 
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: "LOOFIDEV | Potenciando el Futuro Digital",
@@ -18,8 +22,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
-      <body className={`${inter.className} antialiased`}>
+    <html lang="es" className={inter.variable}>
+      <body className="font-sans antialiased">
         <SmokeEffect />
         <SmoothScroll />
         {children}
