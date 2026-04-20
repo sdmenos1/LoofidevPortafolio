@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 import SmoothScroll from "@/components/SmoothScroll";
+import SmokeEffect from "@/components/SmokeEffect";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,6 +20,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${inter.className} antialiased`}>
+        <SmokeEffect />
         <SmoothScroll />
         {children}
       </body>
