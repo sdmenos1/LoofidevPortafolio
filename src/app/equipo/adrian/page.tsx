@@ -4,19 +4,19 @@ import React, { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
+import CertificationCard, { TechTag } from "@/components/CertificationCard"
 import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-// Reusable TechTag component for displaying inline icons and code-styled text
-const TechTag = ({ children, colorClass = "text-blue-400" }: { children: React.ReactNode, colorClass?: string }) => (
-  <span className={`inline-flex items-center gap-1.5 font-mono text-sm mx-1 px-2.5 py-1 rounded-md bg-[#ffffff0a] border border-white/10 ${colorClass} shadow-sm align-baseline`}>
-    {children}
-  </span>
-);
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function AdrianPage() {
   const containerRef = useRef<HTMLElement>(null)
   const imageRef = useRef<HTMLDivElement>(null)
   const textRefs = useRef<(HTMLParagraphElement | HTMLDivElement | null)[]>([])
+  const certSectionRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     // GSAP Animation Sequence
@@ -39,6 +39,24 @@ export default function AdrianPage() {
           "-=0.5" // Start slightly before image finishes
         );
       }
+
+      // Animate Certification Section
+      if (certSectionRef.current) {
+        gsap.fromTo(certSectionRef.current,
+          { opacity: 0, y: 50 },
+          { 
+            opacity: 1, 
+            y: 0, 
+            duration: 1, 
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: certSectionRef.current,
+              start: "top 85%",
+              toggleActions: "play none none reverse"
+            }
+          }
+        );
+      }
     }, containerRef);
     
     return () => ctx.revert(); // Cleanup GSAP context
@@ -54,7 +72,7 @@ export default function AdrianPage() {
     <main className="min-h-screen bg-[#0a0a0b]" ref={containerRef}>
       <Navbar />
       
-      <section className="pt-40 pb-24 px-6 relative overflow-hidden min-h-screen flex items-center">
+      <section className="pt-40 pb-16 px-6 relative overflow-hidden flex items-center">
         {/* Deep Background Glows */}
         <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[150px] pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-[150px] pointer-events-none" />
@@ -142,7 +160,7 @@ export default function AdrianPage() {
               </p>
             </div>
             
-            <div className="mt-12 opacity-0" ref={addToRefs}>
+            <div className="mt-12 opacity-0 flex gap-4" ref={addToRefs}>
               <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-black font-bold tracking-widest uppercase shadow-[0_0_20px_rgba(0,242,255,0.3)] hover:shadow-[0_0_40px_rgba(0,242,255,0.6)] transition-all">
                 Conectar
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
@@ -152,6 +170,36 @@ export default function AdrianPage() {
           
         </div>
       </section>
+
+      <section className="py-20 px-6 relative z-10 border-t border-white/5 bg-gradient-to-b from-[#0a0a0b] to-[#050505]">
+        <div className="max-w-6xl mx-auto opacity-0" ref={certSectionRef}>
+          <div className="flex flex-col md:flex-row items-center gap-4 mb-12">
+            <h2 className="text-3xl md:text-5xl font-extrabold text-white">Logros &<br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">Certificaciones</span></h2>
+            <div className="h-px bg-gradient-to-r from-blue-500/50 to-transparent flex-1 hidden md:block"></div>
+          </div>
+
+          <CertificationCard 
+            title="Autor & Expositor - IEEE EDUNINE 2026"
+            issuer="IEEE World Engineering Education"
+            issuerIcon={<svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>}
+            description="Certificado como Autor y Expositor en la <strong class='text-blue-400 font-medium'>X IEEE World Engineering Education Conference</strong> en Ciudad de México. Investigación sobre la integración de <code class='font-mono text-blue-400'>Business Intelligence</code> y marcos de trabajo <code class='font-mono text-blue-400'>Scrum</code> para la optimización de la colaboración universidad-empresa."
+            isVerified={true}
+            tags={[]}
+            details={[
+              { label: "Ubicación", value: "Ciudad de México, México 🇲🇽" },
+              { label: "Enfoque", value: (
+                <div className="flex flex-wrap gap-2">
+                   <TechTag colorClass="text-blue-400">BI & Data</TechTag>
+                   <TechTag colorClass="text-emerald-400">Scrum Master</TechTag>
+                </div>
+              )},
+              { label: "Impacto", value: "Validación internacional de modelos de datos para la toma de decisiones estratégicas en el sector académico y profesional." }
+            ]}
+            imageSrc="/fotos_dev/certificado_adrian_congreso.jpg"
+          />
+        </div>
+      </section>
+      
       <Footer />
     </main>
   );
