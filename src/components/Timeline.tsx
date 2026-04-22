@@ -174,42 +174,13 @@ export default function Timeline() {
             <div className="hidden md:block w-[45%]"></div>
           </div>
 
-          {/* 2. Luxe Hotel Experience (2025) - RIGHT */}
+
+          {/* 2. CONEIMERA 2025 (2025) - RIGHT */}
           <div className="relative flex justify-between items-center w-full mb-32 flex-col md:flex-row-reverse gap-8">
             <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} whileHover={{ scale: 1.03, y: -10 }} viewport={{ once: true }} transition={{ type: "spring", stiffness: 300, damping: 20 }} className="w-full md:w-[45%]">
-              <div className="p-6 md:p-8 rounded-[2.5rem] bg-white/[0.03] border border-white/10 backdrop-blur-sm hover:border-amber-400/50 transition-all group shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
+              <div className="p-6 md:p-8 rounded-[2.5rem] bg-white/[0.03] border border-white/10 backdrop-blur-sm hover:border-emerald-400/50 transition-all group shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
                 <div className="text-right md:text-left space-y-6">
                   <div className="flex justify-between items-start md:flex-row-reverse">
-                    <div>
-                      <span className="text-xs font-bold text-amber-400 uppercase tracking-widest mb-2 block font-mono">2025 • LUXURY HOSPITALITY</span>
-                      <h4 className="text-3xl font-extrabold text-white">Luxe Hotel Experience</h4>
-                    </div>
-                    <div className="bg-amber-500/10 border border-amber-500/20 p-2.5 rounded-xl"><Icons.NextJS /></div>
-                  </div>
-                  <div className="relative aspect-video rounded-2xl overflow-hidden border border-white/10">
-                    <Image src="/proyectos/hotel_imagen.jpeg" alt="Hotel" fill className="object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
-                  </div>
-                  <p className="text-sm text-gray-400 leading-relaxed font-medium">Landing page inmersiva para cadena de hoteles de lujo. Narrativa visual enfocada en exclusividad.</p>
-                  <div className="flex flex-wrap gap-2.5 justify-end md:justify-start">
-                    {['Next.js', 'Tailwind', 'Framer Motion'].map(t => <Badge key={t} name={t} />)}
-                  </div>
-                  <div className="pt-2 flex justify-end md:justify-start">
-                    <a href="https://dmhotel.vercel.app/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-8 py-3.5 bg-amber-500/10 hover:bg-amber-500 border border-amber-500/30 text-amber-400 hover:text-black font-extrabold rounded-full transition-all">VER PROYECTO</a>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-            <div className="absolute left-1/2 -translate-x-1/2 w-6 h-6 bg-[#0a0a0b] border-4 border-white rounded-full z-10 shadow-[0_0_20px_rgba(251,191,36,0.5)]"></div>
-            <div className="hidden md:block w-[45%]"></div>
-          </div>
-
-          {/* 3. CONEIMERA 2025 (2025) - LEFT */}
-          <div className="relative flex justify-between items-center w-full mb-32 md:flex-row flex-col gap-8">
-            <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} whileHover={{ scale: 1.03, y: -10 }} viewport={{ once: true }} transition={{ type: "spring", stiffness: 300, damping: 20 }} className="w-full md:w-[45%]">
-              <div className="p-6 md:p-8 rounded-[2.5rem] bg-white/[0.03] border border-white/10 backdrop-blur-sm hover:border-emerald-400/50 transition-all group shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
-                <div className="space-y-6">
-                  <div className="flex justify-between items-start">
                     <div>
                       <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-2 block font-mono">2025 • ACADEMIC & TECHNOLOGY</span>
                       <h4 className="text-3xl font-extrabold text-white">CONEIMERA 2025</h4>
@@ -221,10 +192,10 @@ export default function Timeline() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
                   </div>
                   <p className="text-sm text-gray-400 leading-relaxed font-medium">Plataforma oficial para el Congreso Nacional de Estudiantes de Ingeniería. Gestión de eventos y alta concurrencia.</p>
-                  <div className="flex flex-wrap gap-2.5">
+                  <div className="flex flex-wrap gap-2.5 justify-end md:justify-start">
                     {['Astro', 'Svelte', 'Tailwind'].map(t => <Badge key={t} name={t} />)}
                   </div>
-                  <div className="pt-2">
+                  <div className="pt-2 flex justify-end md:justify-start">
                     <a href="https://coneimera.vercel.app/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-8 py-3.5 bg-emerald-500/10 hover:bg-emerald-500 border border-emerald-500/30 text-emerald-400 hover:text-black font-extrabold rounded-full transition-all">VER PROYECTO</a>
                   </div>
                 </div>
@@ -234,12 +205,12 @@ export default function Timeline() {
             <div className="hidden md:block w-[45%]"></div>
           </div>
 
-          {/* 4. Multi-Tenant BI & CRM (2026) - RIGHT */}
-          <div className="relative flex justify-between items-center w-full mb-32 flex-col md:flex-row-reverse gap-8">
-            <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} whileHover={{ scale: 1.03, y: -10 }} viewport={{ once: true }} transition={{ type: "spring", stiffness: 300, damping: 20 }} className="w-full md:w-[45%]">
+          {/* 3. Multi-Tenant BI & CRM (2026) - LEFT */}
+          <div className="relative flex justify-between items-center w-full mb-32 md:flex-row flex-col gap-8">
+            <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} whileHover={{ scale: 1.03, y: -10 }} viewport={{ once: true }} transition={{ type: "spring", stiffness: 300, damping: 20 }} className="w-full md:w-[45%]">
               <div className="p-6 md:p-8 rounded-[2.5rem] bg-white/[0.03] border border-white/10 backdrop-blur-sm hover:border-blue-500/50 transition-all group shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
-                <div className="text-right md:text-left space-y-6">
-                  <div className="flex justify-between items-start md:flex-row-reverse">
+                <div className="space-y-6">
+                  <div className="flex justify-between items-start">
                     <div>
                       <span className="text-xs font-bold text-blue-400 uppercase tracking-widest mb-2 block font-mono">2026 • BUSINESS INTELLIGENCE</span>
                       <h4 className="text-3xl font-extrabold text-white">Multi-Tenant BI & CRM</h4>
@@ -251,7 +222,7 @@ export default function Timeline() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
                   </div>
                   <p className="text-sm text-gray-400 leading-relaxed font-medium">Plataforma BI Multi-Tenant. Centraliza leads y automatiza ROAS/CPA con motor ETL masivo.</p>
-                  <div className="flex flex-wrap gap-2.5 justify-end md:justify-start">
+                  <div className="flex flex-wrap gap-2.5">
                     {['React', 'Node.js', 'PostgreSQL', 'AWS RDS', 'Chart.js'].map(t => <Badge key={t} name={t} />)}
                   </div>
                 </div>
@@ -261,12 +232,12 @@ export default function Timeline() {
             <div className="hidden md:block w-[45%]"></div>
           </div>
 
-          {/* 5. Falcon Towers System (2026) - LEFT */}
-          <div className="relative flex justify-between items-center w-full mb-32 md:flex-row flex-col gap-8">
-            <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} whileHover={{ scale: 1.03, y: -10 }} viewport={{ once: true }} transition={{ type: "spring", stiffness: 300, damping: 20 }} className="w-full md:w-[45%]">
+          {/* 4. Falcon Towers System (2026) - RIGHT */}
+          <div className="relative flex justify-between items-center w-full mb-32 flex-col md:flex-row-reverse gap-8">
+            <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} whileHover={{ scale: 1.03, y: -10 }} viewport={{ once: true }} transition={{ type: "spring", stiffness: 300, damping: 20 }} className="w-full md:w-[45%]">
               <div className="p-6 md:p-8 rounded-[2.5rem] bg-white/[0.03] border border-white/10 backdrop-blur-sm hover:border-violet-500/50 transition-all group shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
-                <div className="space-y-6">
-                  <div className="flex justify-between items-start">
+                <div className="text-right md:text-left space-y-6">
+                  <div className="flex justify-between items-start md:flex-row-reverse">
                     <div>
                       <span className="text-xs font-bold text-violet-400 uppercase tracking-widest mb-2 block font-mono">2026 • TELECOM & ASSET MANAGEMENT</span>
                       <h4 className="text-3xl font-extrabold text-white">Gestor de Reportes de Torres de Telecomunicaciones</h4>
@@ -278,7 +249,7 @@ export default function Timeline() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
                   </div>
                   <p className="text-sm text-gray-400 leading-relaxed font-medium">Gestión de activos de telecomunicaciones. Control operativo, dashboards en tiempo real y geolocalización.</p>
-                  <div className="flex flex-wrap gap-2.5">
+                  <div className="flex flex-wrap gap-2.5 justify-end md:justify-start">
                     {['React 18', 'Node.js', 'MySQL', 'Drizzle ORM', 'TanStack Query'].map(t => <Badge key={t} name={t} />)}
                   </div>
                 </div>
@@ -288,12 +259,12 @@ export default function Timeline() {
             <div className="hidden md:block w-[45%]"></div>
           </div>
 
-          {/* 6. JKO Asfaltos (2026) - RIGHT */}
-          <div className="relative flex justify-between items-center w-full mb-32 flex-col md:flex-row-reverse gap-8">
-            <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} whileHover={{ scale: 1.03, y: -10 }} viewport={{ once: true }} transition={{ type: "spring", stiffness: 300, damping: 20 }} className="w-full md:w-[45%]">
+          {/* 5. JKO Asfaltos (2026) - LEFT */}
+          <div className="relative flex justify-between items-center w-full mb-32 md:flex-row flex-col gap-8">
+            <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} whileHover={{ scale: 1.03, y: -10 }} viewport={{ once: true }} transition={{ type: "spring", stiffness: 300, damping: 20 }} className="w-full md:w-[45%]">
               <div className="p-6 md:p-8 rounded-[2.5rem] bg-white/[0.03] border border-white/10 backdrop-blur-sm hover:border-cyan-400/50 transition-all group shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
-                <div className="text-right md:text-left space-y-6">
-                  <div className="flex justify-between items-start md:flex-row-reverse">
+                <div className="space-y-6">
+                  <div className="flex justify-between items-start">
                     <div>
                       <span className="text-xs font-bold text-cyan-400 uppercase tracking-widest mb-2 block font-mono">2026 • INFRAESTRUCTURA PREMIUM</span>
                       <h4 className="text-3xl font-extrabold text-white">JKO Asfaltos</h4>
@@ -305,7 +276,7 @@ export default function Timeline() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
                   </div>
                   <p className="text-sm text-gray-400 leading-relaxed font-medium">Landing Page de alto impacto para logística de asfaltos. Estética "Apple" y optimización extrema.</p>
-                  <div className="flex flex-wrap gap-2.5 justify-end md:justify-start">
+                  <div className="flex flex-wrap gap-2.5">
                     {['Next.js 15+', 'TypeScript', 'Tailwind', 'GSAP'].map(t => <Badge key={t} name={t} />)}
                   </div>
                   <div className="pt-2">
@@ -318,12 +289,12 @@ export default function Timeline() {
             <div className="hidden md:block w-[45%]"></div>
           </div>
 
-          {/* 7. Sistemas de caja Top Beauty (2026) - LEFT */}
-          <div className="relative flex justify-between items-center w-full mb-32 md:flex-row flex-col gap-8">
-            <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} whileHover={{ scale: 1.03, y: -10 }} viewport={{ once: true }} transition={{ type: "spring", stiffness: 300, damping: 20 }} className="w-full md:w-[45%]">
+          {/* 6. Sistemas de caja Top Beauty (2026) - RIGHT */}
+          <div className="relative flex justify-between items-center w-full mb-32 flex-col md:flex-row-reverse gap-8">
+            <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} whileHover={{ scale: 1.03, y: -10 }} viewport={{ once: true }} transition={{ type: "spring", stiffness: 300, damping: 20 }} className="w-full md:w-[45%]">
               <div className="p-6 md:p-8 rounded-[2.5rem] bg-white/[0.03] border border-white/10 backdrop-blur-sm hover:border-blue-400/50 transition-all group shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
-                <div className="space-y-6">
-                  <div className="flex justify-between items-start">
+                <div className="text-right md:text-left space-y-6">
+                  <div className="flex justify-between items-start md:flex-row-reverse">
                     <div>
                       <span className="text-xs font-bold text-blue-400 uppercase tracking-widest mb-2 block font-mono">2026 • BUSINESS MANAGEMENT & AUTOMATION</span>
                       <h4 className="text-3xl font-extrabold text-white">Top Beauty Box System</h4>
@@ -351,7 +322,7 @@ export default function Timeline() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80 pointer-events-none" />
                     
                     {/* Visualizer Tabs */}
-                    <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-1.5">
+                    <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-1.5 justify-end md:justify-start">
                       {topBeautyImages.map((img, idx) => (
                         <button
                           key={idx}
@@ -371,7 +342,7 @@ export default function Timeline() {
                     </div>
                   </div>
                   <p className="text-sm text-gray-400 leading-relaxed font-medium">Sistema integral para Top Beauty que centraliza citas vía chatbot, gestión de asesoras, clientes y logística. Control administrativo total con integraciones en AWS y Google Sheets.</p>
-                  <div className="flex flex-wrap gap-2.5">
+                  <div className="flex flex-wrap gap-2.5 justify-end md:justify-start">
                     {['Next.js', 'MySQL', 'Prisma ORM', 'AWS', 'Google Sheets'].map(t => <Badge key={t} name={t} />)}
                   </div>
                 </div>
@@ -381,12 +352,12 @@ export default function Timeline() {
             <div className="hidden md:block w-[45%]"></div>
           </div>
 
-          {/* 8. Chatbot Automatizado Meta (2026) - RIGHT */}
-          <div className="relative flex justify-between items-center w-full mb-32 flex-col md:flex-row-reverse gap-8">
-            <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} whileHover={{ scale: 1.03, y: -10 }} viewport={{ once: true }} transition={{ type: "spring", stiffness: 300, damping: 20 }} className="w-full md:w-[45%]">
+          {/* 7. Chatbot Automatizado Meta (2026) - LEFT */}
+          <div className="relative flex justify-between items-center w-full mb-32 md:flex-row flex-col gap-8">
+            <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} whileHover={{ scale: 1.03, y: -10 }} viewport={{ once: true }} transition={{ type: "spring", stiffness: 300, damping: 20 }} className="w-full md:w-[45%]">
               <div className="p-6 md:p-8 rounded-[2.5rem] bg-white/[0.03] border border-white/10 backdrop-blur-sm hover:border-green-500/50 transition-all group shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
-                <div className="text-right md:text-left space-y-6">
-                  <div className="flex justify-between items-start md:flex-row-reverse">
+                <div className="space-y-6">
+                  <div className="flex justify-between items-start">
                     <div>
                       <span className="text-xs font-bold text-green-400 uppercase tracking-widest mb-2 block font-mono">2026 • AI & AUTOMATION</span>
                       <h4 className="text-3xl font-extrabold text-white">WhatsApp AI Chatbot</h4>
@@ -414,7 +385,7 @@ export default function Timeline() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80 pointer-events-none" />
                     
                     {/* Visualizer Tabs */}
-                    <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-1.5 justify-end md:justify-start">
+                    <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-1.5">
                       {chatbotImages.map((img, idx) => (
                         <button
                           key={idx}
@@ -434,7 +405,7 @@ export default function Timeline() {
                     </div>
                   </div>
                   <p className="text-sm text-gray-400 leading-relaxed font-medium">Asistente inteligente de WhatsApp integrado con Meta Cloud API. Automatiza la toma de citas, consulta de servicios y sincronización inmediata con Google Sheets.</p>
-                  <div className="flex flex-wrap gap-2.5 justify-end md:justify-start">
+                  <div className="flex flex-wrap gap-2.5">
                     {['Node.js', 'TypeScript', 'Meta API', 'Google Sheets'].map(t => <Badge key={t} name={t} />)}
                   </div>
                 </div>
