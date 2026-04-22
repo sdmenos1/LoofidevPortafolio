@@ -185,7 +185,6 @@ export default function MarceloPage() {
             issuer="CIMPS 2024"
             issuerIcon={<svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>}
             description="Presentación de artículo científico internacional sobre soporte preventivo en salud mental para la detección de cuadros de depresión severa. <strong class='text-cyan-400 font-medium ml-1'>Ponente Internacional IEEE - CIMPS 2024</strong>."
-            tags={[]}
             details={[
               { label: "Proyecto", value: 'Chatbot "Baymax"' },
               { label: "Core Tech", value: (
@@ -206,7 +205,6 @@ export default function MarceloPage() {
             issuerIcon={<svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" /></svg>}
             description="Acreditación técnica en el desarrollo, depuración y refactorización de programas utilizando <code class='font-mono text-cyan-400'>Python 3</code>. Implementación de lógica algorítmica y manejo de la <code class='font-mono text-cyan-400'>Standard Library</code> para la resolución de problemas complejos."
             isVerified={true}
-            tags={[]}
             details={[
               { label: "Institución", value: "Cisco & Python Institute" },
               { label: "Nivel", value: (
@@ -226,7 +224,6 @@ export default function MarceloPage() {
             issuerIcon={<svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.175 12.164c.264-.492.385-.828.385-1.18 0-.585-.303-1.04-.954-1.258-2.155-.724-4.322-1.444-6.497-2.138-.456-.145-.985-.246-1.411-.19-.504.067-.932.327-1.163.753-.255.47-.358.783-.358 1.134 0 .584.293 1.026.917 1.25 1.579.566 3.167 1.11 4.755 1.66 1.77.615 3.535 1.24 5.312 1.83.475.144.975.253 1.415.188.468-.066.864-.326 1.1-.73s1.175.731.73-.32zm-7.65-2.072a.855.855 0 0 0-.17-1.135 1.054 1.054 0 0 0-1.416.14l-4.526 4.542a.844.844 0 0 0-.131 1.157c.36.42.36.42.753-.404l3.1-3.088c.184.283.456.452.835.485s.827-.14 1.1-.53z"/></svg>}
             description="Acreditación técnica que representa <span class='text-white font-black text-lg bg-white/5 px-2 py-0.5 rounded border border-white/10'>300 horas</span> de desarrollo práctico. Implementación avanzada de <code class='font-mono text-cyan-400'>HTML5</code>, <code class='font-mono text-cyan-400'>CSS3</code>, <code class='font-mono text-cyan-400'>Flexbox</code> y <code class='font-mono text-cyan-400'>CSS Grid</code>."
             verifyUrl="https://www.freecodecamp.org/certification/fccd5082163-455b-4172-9694-8fcd215801ff/responsive-web-design"
-            tags={[]}
             details={[
               { label: "Duración", value: "300 Horas de Ingeniería Frontend" },
               { label: "Tecnologías", value: (
