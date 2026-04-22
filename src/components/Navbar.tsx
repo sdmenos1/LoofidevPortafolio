@@ -21,12 +21,25 @@ export default function Navbar() {
     { name: 'Nosotros', href: '/#nosotros' },
     { name: 'Servicios', href: '/#servicios' },
     { name: 'Proyectos', href: '/#proyectos' },
-    { name: 'Contacto', href: '/#contacto' },
   ]
 
   const teamMembers = [
-    { name: 'Marcelo Dev', role: 'Co-fundador / UI/UX Engineer', href: '/equipo/marcelo', color: 'text-cyan-400' },
-    { name: 'Adrian Dev', role: 'Co-fundador / Fullstack Developer', href: '/equipo/adrian', color: 'text-blue-400' },
+    { 
+      name: 'Marcelo Dev', 
+      role: 'Co-fundador / UI/UX Engineer', 
+      href: '/equipo/marcelo', 
+      hoverColor: 'group-hover/item:text-neon-cyan',
+      mobileHover: 'group-hover:text-neon-cyan',
+      glow: 'group-hover/item:drop-shadow-[0_0_10px_rgba(0,255,204,0.3)]'
+    },
+    { 
+      name: 'Adrian Dev', 
+      role: 'Co-fundador / Fullstack Developer', 
+      href: '/equipo/adrian', 
+      hoverColor: 'group-hover/item:text-neon-blue',
+      mobileHover: 'group-hover:text-neon-blue',
+      glow: 'group-hover/item:drop-shadow-[0_0_10px_rgba(0,242,255,0.3)]'
+    },
   ]
 
   return (
@@ -87,7 +100,7 @@ export default function Navbar() {
                     href={member.href} 
                     className="px-4 py-3 hover:bg-white/5 rounded-xl transition-all flex flex-col group/item"
                   >
-                    <span className={`text-white text-xs font-extrabold group-hover/item:${member.color} transition-colors`}>
+                    <span className={`text-white text-xs font-extrabold transition-all duration-300 ${member.hoverColor} ${member.glow}`}>
                       {member.name}
                     </span>
                     <span className="text-[10px] text-gray-400 font-mono mt-1 font-bold">
@@ -98,6 +111,14 @@ export default function Navbar() {
               </div>
             </div>
           </div>
+
+          {/* Contacto Link - Always last */}
+          <a href="/#contacto" className="relative group py-2">
+            <span className="hover:text-cyan-400 transition-colors uppercase tracking-[0.15em] text-[11px] font-bold">
+              Contacto
+            </span>
+            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-cyan-400 transition-all duration-300 group-hover:w-full" />
+          </a>
         </nav>
 
         {/* Action Button & Mobile Toggle */}
@@ -163,10 +184,22 @@ export default function Navbar() {
                     onClick={() => setIsOpen(false)}
                     className="flex flex-col mb-4 group"
                   >
-                    <span className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors">{member.name}</span>
+                    <span className={`text-lg font-bold text-white transition-colors ${member.mobileHover}`}>
+                      {member.name}
+                    </span>
                     <span className="text-[10px] text-gray-400 font-mono font-bold uppercase">{member.role}</span>
                   </a>
                 ))}
+
+                <div className="h-px bg-white/10 my-4" />
+
+                <a 
+                  href="/#contacto" 
+                  onClick={() => setIsOpen(false)}
+                  className="text-2xl font-black text-white hover:text-cyan-400 transition-colors uppercase tracking-wider"
+                >
+                  Contacto
+                </a>
 
                 <button className="mt-8 px-6 py-4 bg-cyan-400 text-black rounded-2xl text-sm font-black uppercase tracking-widest shadow-[0_10px_30px_rgba(0,242,255,0.2)]">
                   INICIAR PROYECTO

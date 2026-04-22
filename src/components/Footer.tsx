@@ -67,7 +67,7 @@ export default function Footer() {
       
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
         {/* Brand Column */}
-        <div className="space-y-6">
+        <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-6">
           <div className="flex items-center gap-4">
             <Image 
               src="/logo_oficial.jpeg" 
@@ -98,9 +98,9 @@ export default function Footer() {
         </div>
 
         {/* Services Column */}
-        <div className="space-y-6 lg:pl-8">
+        <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-6 lg:pl-8">
           <h4 className="text-xs font-extrabold uppercase tracking-[0.25em] text-blue-400">Especialidades</h4>
-          <nav className="flex flex-col gap-4">
+          <nav className="flex flex-col items-center md:items-start gap-4">
             {SERVICES_NAV.map((item) => (
               <a 
                 key={item.label} 
@@ -114,9 +114,9 @@ export default function Footer() {
         </div>
 
         {/* Navigation Column */}
-        <div className="space-y-6">
+        <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-6">
           <h4 className="text-xs font-extrabold uppercase tracking-[0.25em] text-cyan-400">Plataforma</h4>
-          <nav className="flex flex-col gap-4">
+          <nav className="flex flex-col items-center md:items-start gap-4">
             {FOOTER_NAV.map((item) => (
               <a 
                 key={item.label} 
@@ -129,8 +129,8 @@ export default function Footer() {
           </nav>
         </div>
 
-        {/* Contact/Newsletter Column Alternative */}
-        <div className="space-y-6">
+        {/* Contact Column */}
+        <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-6">
           <h4 className="text-xs font-extrabold uppercase tracking-[0.25em] text-emerald-400">Contacto Directo</h4>
           <div className="space-y-4">
             <a href="mailto:loofidevtech@gmail.com" className="group block">
@@ -146,13 +146,13 @@ export default function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-        <p className="text-[10px] text-gray-400 font-mono tracking-widest uppercase">
+        <p className="text-[10px] text-gray-400 font-mono tracking-widest uppercase text-center md:text-left">
           © {new Date().getFullYear()} LOOFIDEV SOFTWARE & ENGINEERING. TODOS LOS DERECHOS RESERVADOS.
         </p>
-        <div className="flex gap-6 text-[10px] text-gray-400 font-mono tracking-widest uppercase">
+        <div className="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-2 text-[10px] text-gray-400 font-mono tracking-widest uppercase">
           <a href="#" className="hover:text-white transition-colors">Privacidad</a>
           <a href="#" className="hover:text-white transition-colors">Términos</a>
-          <span className="text-gray-800">|</span>
+          <span className="text-gray-800 hidden sm:inline">|</span>
           <span className="text-cyan-400 font-bold opacity-80">V.2.0.4-STABLE</span>
         </div>
       </div>
