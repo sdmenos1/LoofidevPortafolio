@@ -3,6 +3,12 @@
 import { motion } from 'framer-motion'
 import React, { useEffect, useRef } from 'react'
 import Image from 'next/image'
+import gsap from 'gsap'
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollToPlugin)
+}
 
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -87,21 +93,21 @@ export default function Hero() {
           loop 
           muted 
           playsInline 
-          className="absolute inset-0 w-full h-full object-cover opacity-60"
+          className="absolute inset-0 w-full h-full object-cover opacity-80"
         >
           <source src="/videos/hero-background.mp4" type="video/mp4" />
         </video>
-        {/* Professional Overlay Mask */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0b] via-[#0a0a0b]/40 to-[#0a0a0b] z-1" />
-        <div className="absolute inset-0 bg-black/40 z-1" />
+        {/* Professional Overlay Mask - Reduced darkness */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0b]/80 via-transparent to-[#0a0a0b]/80 z-1" />
+        <div className="absolute inset-0 bg-black/20 z-1" />
       </div>
 
-      {/* Background Glowing Orbs */}
-      <div className="absolute top-1/3 left-[20%] -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/10 blur-[150px] rounded-[100%] pointer-events-none z-2" />
-      <div className="absolute top-2/3 right-[10%] w-[500px] h-[500px] bg-blue-600/10 blur-[150px] rounded-[100%] pointer-events-none z-2" />
+      {/* Background Glowing Orbs - Increased intensity */}
+      <div className="absolute top-1/3 left-[20%] -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-400/20 blur-[150px] rounded-[100%] pointer-events-none z-2" />
+      <div className="absolute top-2/3 right-[10%] w-[500px] h-[500px] bg-blue-500/20 blur-[150px] rounded-[100%] pointer-events-none z-2" />
 
-      {/* Particle Canvas */}
-      <canvas ref={canvasRef} className="absolute inset-0 z-2 pointer-events-none opacity-30" id="heroCanvas" />
+      {/* Particle Canvas - Increased opacity */}
+      <canvas ref={canvasRef} className="absolute inset-0 z-2 pointer-events-none opacity-60" id="heroCanvas" />
       
       <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-8">
         <div className="flex-1 text-center lg:text-left mt-10 lg:mt-0">
@@ -139,11 +145,29 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start"
           >
-            <button className="relative overflow-hidden group btn-primary px-10 py-5 rounded-2xl font-bold text-black uppercase tracking-widest text-sm shadow-[0_0_40px_rgba(0,242,255,0.4)] hover:shadow-[0_0_60px_rgba(0,242,255,0.6)] transition-all">
+            <button 
+              onClick={() => {
+                gsap.to(window, {
+                  duration: 1.5,
+                  scrollTo: "#contacto",
+                  ease: "power4.inOut"
+                });
+              }}
+              className="relative overflow-hidden group btn-primary px-10 py-5 rounded-2xl font-bold text-black uppercase tracking-widest text-sm shadow-[0_0_40px_rgba(0,242,255,0.4)] hover:shadow-[0_0_60px_rgba(0,242,255,0.6)] transition-all cursor-pointer"
+            >
               <span className="relative z-10">Iniciar Transformación</span>
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
             </button>
-            <button className="px-10 py-5 rounded-2xl border border-white/10 hover:border-cyan-400/50 hover:bg-cyan-900/10 transition-all font-bold uppercase tracking-widest text-sm backdrop-blur-md">
+            <button 
+              onClick={() => {
+                gsap.to(window, {
+                  duration: 1.5,
+                  scrollTo: "#proyectos",
+                  ease: "power4.inOut"
+                });
+              }}
+              className="px-10 py-5 rounded-2xl border border-white/10 hover:border-cyan-400/50 hover:bg-cyan-900/10 transition-all font-bold uppercase tracking-widest text-sm backdrop-blur-md cursor-pointer"
+            >
               Explorar Soluciones
             </button>
           </motion.div>

@@ -217,7 +217,7 @@ export default function MarceloPage() {
               )},
               { label: "Meta", value: "Avala los conocimientos para la certificación internacional Certified Entry-Level Python Programmer (PCEP)." }
             ]}
-            imageSrc="/fotos_dev/CERTIFICADO_MARCELO_PYTHON.jfif"
+            imageSrc="/fotos_dev/CERTIFICADO_MARCELO_PYTHON.jpg"
           />
 
           <CertificationCard 
@@ -238,7 +238,7 @@ export default function MarceloPage() {
               )},
               { label: "Foco", value: "Accesibilidad web, diseño adaptativo y arquitectura de layouts modernos." }
             ]}
-            imageSrc="/fotos_dev/CERTIFICADO_MARCELO_FREECODECAMP.jfif"
+            imageSrc="/fotos_dev/CERTIFICADO_MARCELO_FREECODECAMP.jpg"
           />
 
         </div>

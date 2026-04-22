@@ -194,6 +194,9 @@ export default function Timeline() {
                   <div className="flex flex-wrap gap-2.5 justify-end md:justify-start">
                     {['Next.js', 'Tailwind', 'Framer Motion'].map(t => <Badge key={t} name={t} />)}
                   </div>
+                  <div className="pt-2 flex justify-end md:justify-start">
+                    <a href="https://dmhotel.vercel.app/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-8 py-3.5 bg-amber-500/10 hover:bg-amber-500 border border-amber-500/30 text-amber-400 hover:text-black font-extrabold rounded-full transition-all">VER PROYECTO</a>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -266,7 +269,7 @@ export default function Timeline() {
                   <div className="flex justify-between items-start">
                     <div>
                       <span className="text-xs font-bold text-violet-400 uppercase tracking-widest mb-2 block font-mono">2026 • TELECOM & ASSET MANAGEMENT</span>
-                      <h4 className="text-3xl font-extrabold text-white">Falcon Towers System</h4>
+                      <h4 className="text-3xl font-extrabold text-white">Gestor de Reportes de Torres de Telecomunicaciones</h4>
                     </div>
                     <div className="bg-violet-500/10 border border-violet-500/20 p-2.5 rounded-xl"><Icons.NodeJS /></div>
                   </div>
