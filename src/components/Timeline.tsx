@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 
@@ -16,7 +16,7 @@ const Icons = {
     <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="2"/><path d="M21 12c0 1-.3 1.9-1 2.8-1.5 2.1-4.2 3.6-7.5 4-1-.1-1.9-.1-2.9-.1-3.3-.4-6-1.9-7.5-3.9-.7-.9-1-1.8-1-2.8 0-1 .3-1.9 1-2.8 1.5-2.1 4.2-3.6 7.5-4 1-.1 1.9-.1 2.9.1 3.3.4 6 1.9 7.5 3.9.7.9 1 1.8 1 2.8z" fill="none" stroke="currentColor" strokeWidth="1.2"/><path d="M12 21c-1.1 0-2.1-.3-3-1-2.2-1.5-3.8-4.2-4.2-7.5-.1-1-.1-1.9.1-2.9.4-3.3 1.9-6 3.9-7.5.9-.7 1.8-1 2.8-1 1.1 0 2.1.3 3 1 2.2 1.5 3.8 4.2 4.2 7.5.1 1 .1 1.9-.1 2.9-.4 3.3-1.9 6-3.9 7.5-.9.7-1.8 1-2.8 1z" fill="none" stroke="currentColor" strokeWidth="1.2"/><path d="M18.4 18.4c-.8.8-1.7 1.2-2.7 1.4-2.6.4-5.6-.2-8.3-1.8-.8-.5-1.1-1.1-2.3-1.7-2.3-2.4-3.3-5.2-3.3-7.8.1-1.1.4-2 .9-2.8.8-.8 1.7-1.2 2.7-1.4 2.6-.4 5.6.2 8.3 1.8.8.5 1.6 1.1 2.3 1.7 2.3 2.4 3.5 5.2 3.3 7.8-.1 1.1-.4 2-.9 2.8z" fill="none" stroke="currentColor" strokeWidth="1.2"/></svg>
   ),
   Tailwind: () => (
-    <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z"/></svg>
+    <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228 1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228 1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z"/></svg>
   ),
   Astro: () => (
     <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M19 2l-7 7-7-7v14l7 7 7-7V2z"/></svg>
@@ -275,7 +275,7 @@ export default function Timeline() {
                     <Image src="/proyectos/asfalto_imagen.jpeg" alt="JKO" fill className="object-cover" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
                   </div>
-                  <p className="text-sm text-gray-400 leading-relaxed font-medium">Landing Page de alto impacto para logística de asfaltos. Estética "Apple" y optimización extrema.</p>
+                  <p className="text-sm text-gray-400 leading-relaxed font-medium">Landing Page de alto impacto para logística de asfaltos. Estética &quot;Apple&quot; y optimización extrema.</p>
                   <div className="flex flex-wrap gap-2.5">
                     {['Next.js 15+', 'TypeScript', 'Tailwind', 'GSAP'].map(t => <Badge key={t} name={t} />)}
                   </div>

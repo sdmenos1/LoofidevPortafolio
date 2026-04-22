@@ -25,7 +25,6 @@ interface CertificationCardProps {
   title: string
   issuer: string
   description: string
-  tags: { label: string; colorClass: string }[]
   details?: { label: string; value: string | React.ReactNode }[]
   imageSrc: string
   isVerified?: boolean
@@ -37,7 +36,6 @@ export default function CertificationCard({
   title,
   issuer,
   description,
-  tags,
   details,
   imageSrc,
   isVerified = false,
@@ -45,12 +43,9 @@ export default function CertificationCard({
   verifyUrl,
 }: CertificationCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [mounted, setMounted] = useState(false)
   const cardRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    setMounted(true)
-    
     // Smooth Entrance Animation
     if (cardRef.current) {
       gsap.fromTo(cardRef.current,
@@ -172,7 +167,7 @@ export default function CertificationCard({
       </div>
 
       {/* Modal Portal */}
-      {mounted && isModalOpen && createPortal(
+      {isModalOpen && typeof document !== 'undefined' && createPortal(
         <div 
           className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-10 animate-in fade-in duration-300"
           onClick={() => setIsModalOpen(false)}

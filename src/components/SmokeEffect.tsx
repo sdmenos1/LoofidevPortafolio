@@ -2,6 +2,48 @@
 
 import React, { useEffect, useRef } from 'react';
 
+class Spark {
+  x: number;
+  y: number;
+  size: number;
+  speedX: number;
+  speedY: number;
+  color: string;
+  life: number;
+  decay: number;
+
+  constructor(x: number, y: number, color: string) {
+    this.x = x;
+    this.y = y;
+    this.size = Math.random() * 2 + 0.5;
+    this.speedX = (Math.random() - 0.5) * 8;
+    this.speedY = (Math.random() - 0.5) * 8;
+    this.color = color;
+    this.life = 1.0;
+    this.decay = Math.random() * 0.03 + 0.015;
+  }
+
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    this.speedX *= 0.98;
+    this.speedY *= 0.98;
+    this.life -= this.decay;
+  }
+
+  draw(ctx: CanvasRenderingContext2D) {
+    ctx.save();
+    ctx.globalAlpha = Math.max(0, this.life);
+    ctx.fillStyle = this.color;
+    ctx.shadowBlur = 15;
+    ctx.shadowColor = this.color;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+}
+
 const SmokeEffect: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -19,8 +61,8 @@ const SmokeEffect: React.FC = () => {
       color: string;
     }
 
-    let trail: TrailPoint[] = [];
-    let sparks: Spark[] = [];
+    const trail: TrailPoint[] = [];
+    const sparks: Spark[] = [];
     let colorIndex = 0;
     let targetColor: string | null = null;
     
@@ -39,49 +81,6 @@ const SmokeEffect: React.FC = () => {
 
     window.addEventListener('resize', resize);
     resize();
-
-    class Spark {
-      x: number;
-      y: number;
-      size: number;
-      speedX: number;
-      speedY: number;
-      color: string;
-      life: number;
-      decay: number;
-
-      constructor(x: number, y: number, color: string) {
-        this.x = x;
-        this.y = y;
-        this.size = Math.random() * 2 + 0.5;
-        this.speedX = (Math.random() - 0.5) * 8;
-        this.speedY = (Math.random() - 0.5) * 8;
-        this.color = color;
-        this.life = 1.0;
-        this.decay = Math.random() * 0.03 + 0.015;
-      }
-
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        this.speedX *= 0.98;
-        this.speedY *= 0.98;
-        this.life -= this.decay;
-      }
-
-      draw() {
-        if (!ctx) return;
-        ctx.save();
-        ctx.globalAlpha = Math.max(0, this.life);
-        ctx.fillStyle = this.color;
-        ctx.shadowBlur = 15;
-        ctx.shadowColor = this.color;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
-      }
-    }
 
     const handleInput = (clientX: number, clientY: number) => {
       // Logic for color adaptation
@@ -175,7 +174,7 @@ const SmokeEffect: React.FC = () => {
       // Draw sparks
       for (let i = 0; i < sparks.length; i++) {
         sparks[i].update();
-        sparks[i].draw();
+        sparks[i].draw(ctx);
         if (sparks[i].life <= 0) {
           sparks.splice(i, 1);
           i--;

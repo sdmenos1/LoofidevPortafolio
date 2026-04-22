@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export default function Navbar() {
@@ -51,7 +52,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Logo Section */}
         <div className="flex items-center gap-2">
-          <a href="/" className="flex items-center gap-3 group">
+          <Link href="/" className="flex items-center gap-3 group">
             <div className="relative">
               <Image 
                 src="/logo_oficial.jpeg" 
@@ -65,13 +66,13 @@ export default function Navbar() {
             <span className="text-xl md:text-2xl font-black tracking-tighter hidden sm:block text-white">
               LOOFI<span className="text-cyan-400">DEV</span>
             </span>
-          </a>
+          </Link>
         </div>
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex gap-8 text-sm font-bold text-gray-300 items-center">
           {navLinks.map((link) => (
-            <a 
+            <Link 
               key={link.name}
               href={link.href} 
               className="relative group py-2"
@@ -80,7 +81,7 @@ export default function Navbar() {
                 {link.name}
               </span>
               <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-cyan-400 transition-all duration-300 group-hover:w-full" />
-            </a>
+            </Link>
           ))}
           
           {/* Desktop Dropdown */}
@@ -95,7 +96,7 @@ export default function Navbar() {
             <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-64 bg-[#0a0a0b]/95 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.6)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 overflow-hidden">
               <div className="p-2 flex flex-col">
                 {teamMembers.map((member) => (
-                  <a 
+                  <Link 
                     key={member.name}
                     href={member.href} 
                     className="px-4 py-3 hover:bg-white/5 rounded-xl transition-all flex flex-col group/item"
@@ -106,19 +107,19 @@ export default function Navbar() {
                     <span className="text-[10px] text-gray-400 font-mono mt-1 font-bold">
                       {member.role}
                     </span>
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
           </div>
 
           {/* Contacto Link - Always last */}
-          <a href="/#contacto" className="relative group py-2">
+          <Link href="/#contacto" className="relative group py-2">
             <span className="hover:text-cyan-400 transition-colors uppercase tracking-[0.15em] text-[11px] font-bold">
               Contacto
             </span>
             <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-cyan-400 transition-all duration-300 group-hover:w-full" />
-          </a>
+          </Link>
         </nav>
 
         {/* Action Button & Mobile Toggle */}
@@ -164,21 +165,21 @@ export default function Navbar() {
             >
               <div className="flex flex-col gap-6">
                 {navLinks.map((link) => (
-                  <a 
+                  <Link 
                     key={link.name}
                     href={link.href} 
                     onClick={() => setIsOpen(false)}
                     className="text-2xl font-black text-white hover:text-cyan-400 transition-colors uppercase tracking-wider"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 ))}
                 
                 <div className="h-px bg-white/10 my-4" />
                 
                 <p className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-bold mb-2">Nuestro Equipo</p>
                 {teamMembers.map((member) => (
-                  <a 
+                  <Link 
                     key={member.name}
                     href={member.href} 
                     onClick={() => setIsOpen(false)}
@@ -188,18 +189,18 @@ export default function Navbar() {
                       {member.name}
                     </span>
                     <span className="text-[10px] text-gray-400 font-mono font-bold uppercase">{member.role}</span>
-                  </a>
+                  </Link>
                 ))}
 
                 <div className="h-px bg-white/10 my-4" />
 
-                <a 
+                <Link 
                   href="/#contacto" 
                   onClick={() => setIsOpen(false)}
                   className="text-2xl font-black text-white hover:text-cyan-400 transition-colors uppercase tracking-wider"
                 >
                   Contacto
-                </a>
+                </Link>
 
                 <button className="mt-8 px-6 py-4 bg-cyan-400 text-black rounded-2xl text-sm font-black uppercase tracking-widest shadow-[0_10px_30px_rgba(0,242,255,0.2)]">
                   INICIAR PROYECTO

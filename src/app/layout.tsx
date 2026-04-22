@@ -12,8 +12,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "LOOFIDEV | Potenciando el Futuro Digital",
+  title: "Loofi Dev | Desarrollo Web",
   description: "Transformamos ideas complejas en soluciones tecnológicas escalables, eficientes y a medida.",
+  icons: {
+    icon: "/logo_oficial.jpeg",
+  }
 };
 
 export default function RootLayout({

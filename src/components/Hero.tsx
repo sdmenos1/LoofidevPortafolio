@@ -10,6 +10,40 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollToPlugin)
 }
 
+class Particle {
+  x: number
+  y: number
+  size: number
+  speedX: number
+  speedY: number
+  opacity: number
+
+  constructor(canvasWidth: number, canvasHeight: number) {
+    this.x = Math.random() * canvasWidth
+    this.y = Math.random() * canvasHeight
+    this.size = Math.random() * 1.5
+    this.speedX = (Math.random() - 0.5) * 0.5
+    this.speedY = (Math.random() - 0.5) * 0.5
+    this.opacity = Math.random() * 0.5
+  }
+
+  update(canvasWidth: number, canvasHeight: number) {
+    this.x += this.speedX
+    this.y += this.speedY
+    if (this.x > canvasWidth) this.x = 0
+    if (this.x < 0) this.x = canvasWidth
+    if (this.y > canvasHeight) this.y = 0
+    if (this.y < 0) this.y = canvasHeight
+  }
+
+  draw(ctx: CanvasRenderingContext2D) {
+    ctx.fillStyle = `rgba(0, 242, 255, ${this.opacity})`
+    ctx.beginPath()
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
+    ctx.fill()
+  }
+}
+
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -19,7 +53,7 @@ export default function Hero() {
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
-    let particles: Particle[] = []
+    const particles: Particle[] = []
 
     const resize = () => {
       canvas.width = window.innerWidth
@@ -28,42 +62,8 @@ export default function Hero() {
     window.addEventListener('resize', resize)
     resize()
 
-    class Particle {
-      x: number
-      y: number
-      size: number
-      speedX: number
-      speedY: number
-      opacity: number
-
-      constructor() {
-        this.x = Math.random() * (canvas?.width || 1000)
-        this.y = Math.random() * (canvas?.height || 1000)
-        this.size = Math.random() * 1.5
-        this.speedX = (Math.random() - 0.5) * 0.5
-        this.speedY = (Math.random() - 0.5) * 0.5
-        this.opacity = Math.random() * 0.5
-      }
-      update() {
-        if (!canvas) return
-        this.x += this.speedX
-        this.y += this.speedY
-        if (this.x > canvas.width) this.x = 0
-        if (this.x < 0) this.x = canvas.width
-        if (this.y > canvas.height) this.y = 0
-        if (this.y < 0) this.y = canvas.height
-      }
-      draw() {
-        if (!ctx) return
-        ctx.fillStyle = `rgba(0, 242, 255, ${this.opacity})`
-        ctx.beginPath()
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
-        ctx.fill()
-      }
-    }
-
     for (let i = 0; i < 120; i++) {
-      particles.push(new Particle())
+      particles.push(new Particle(canvas.width, canvas.height))
     }
 
     let animationId: number
@@ -71,8 +71,8 @@ export default function Hero() {
       if (!canvas) return
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       particles.forEach(p => {
-        p.update()
-        p.draw()
+        p.update(canvas.width, canvas.height)
+        p.draw(ctx)
       })
       animationId = requestAnimationFrame(animate)
     }
@@ -136,7 +136,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl font-medium leading-relaxed lg:border-l-2 lg:border-cyan-500/30 lg:pl-6 mx-auto lg:mx-0"
           >
-            Potenciando el <strong className="text-white font-bold">Futuro Digital</strong> de tu Negocio. Transformamos ideas complejas en arquitecturas altamente escalables.
+            <strong className="text-white font-bold">Desarrollo Web</strong> de Alto Impacto para tu Negocio. Transformamos ideas complejas en arquitecturas altamente escalables y eficientes.
           </motion.p>
           
           <motion.div 
@@ -201,7 +201,7 @@ export default function Hero() {
                 </div>
               </div>
               
-              <div className="font-mono text-sm text-cyan-400 mb-2">import <span className="text-white">{`{ Core, Data }`}</span> from <span className="text-blue-400">'@loofidev/system'</span>;</div>
+              <div className="font-mono text-sm text-cyan-400 mb-2">import <span className="text-white">{`{ Core, Data }`}</span> from <span className="text-blue-400">&apos;@loofidev/system&apos;</span>;</div>
               <div className="font-mono text-sm text-gray-500 mb-8">{"// Inicializando arquitectura empresarial"}</div>
               
               {/* Fake IDE Output */}
