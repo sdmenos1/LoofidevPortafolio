@@ -109,7 +109,7 @@ export default function Hero() {
       {/* Particle Canvas - Increased opacity */}
       <canvas ref={canvasRef} className="absolute inset-0 z-2 pointer-events-none opacity-60" id="heroCanvas" />
       
-      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-8">
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-20">
         <div className="flex-1 text-center lg:text-left mt-10 lg:mt-0">
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
@@ -183,12 +183,12 @@ export default function Hero() {
           <motion.div 
             animate={{ y: [-15, 15, -15] }} 
             transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-            className="relative w-full max-w-[500px]"
+            className="relative w-full max-w-[460px] lg:mr-[-2rem]"
           >
             {/* Super Glow background */}
             <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/20 to-blue-600/20 blur-[80px] z-0" />
             
-            <div className="relative z-10 bg-[#0a0a0b]/80 backdrop-blur-2xl border border-white/10 p-6 md:p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.8)]">
+            <div className="relative z-10 bg-[#0a0a0b]/40 backdrop-blur-3xl border border-white/10 p-6 md:p-8 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.8)]">
               {/* Window Controls */}
               <div className="flex justify-between items-center mb-6 pb-4 border-b border-white/5">
                 <div className="flex gap-2">
@@ -228,7 +228,7 @@ export default function Hero() {
             <motion.div 
               animate={{ y: [10, -10, 10], rotate: [0, 5, 0] }}
               transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }}
-              className="absolute -bottom-8 -left-4 md:-bottom-12 md:-left-12 w-32 h-32 md:w-40 md:h-40 bg-[#0a0a0b] border border-white/20 rounded-[2rem] p-3 shadow-[0_30px_60px_rgba(0,0,0,0.8)] z-20 backdrop-blur-md"
+              className="absolute -bottom-8 -right-4 md:-bottom-12 md:-right-12 w-32 h-32 md:w-40 md:h-40 bg-[#0a0a0b]/40 border border-white/20 rounded-[2rem] p-3 shadow-[0_30px_60px_rgba(0,0,0,0.8)] z-20 backdrop-blur-md"
             >
               <Image src="/logo_oficial.jpeg" alt="Logo" width={160} height={160} className="w-full h-full object-contain rounded-2xl shadow-[inset_0_0_20px_rgba(255,255,255,0.05)]" />
             </motion.div>
