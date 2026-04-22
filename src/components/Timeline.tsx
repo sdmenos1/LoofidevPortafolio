@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useRef } from 'react'
-import { motion, useScroll, useSpring } from 'framer-motion'
+import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 
 // Tech Icons Collection
@@ -45,6 +45,15 @@ const Icons = {
   Drizzle: () => (
     <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM9 13l3 3 3-3V8h-2v4h-2V8H9v5z"/></svg>
   ),
+  Prisma: () => (
+    <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 19.74h20L12 2zm0 4.19l7.08 12.55H4.92L12 6.19z"/></svg>
+  ),
+  GoogleSheets: () => (
+    <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-2h2v2zm0-4H7v-2h2v2zm0-4H7V7h2v2zm4 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V7h2v2zm4 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V7h2v2z"/></svg>
+  ),
+  Meta: () => (
+    <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 18.25c-3.446 0-6.25-2.804-6.25-6.25S8.554 5.75 12 5.75c3.446 0 6.25 2.804 6.25 6.25s-2.804 6.25-6.25 6.25zM12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/></svg>
+  ),
 }
 
 const techStyle = (name: string) => {
@@ -65,6 +74,10 @@ const techStyle = (name: string) => {
     case 'GSAP': return 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20';
     case 'Chart.js': return 'text-rose-400 bg-rose-400/10 border-rose-400/20';
     case 'Drizzle ORM': return 'text-yellow-400 bg-yellow-400/10 border-yellow-400/20';
+    case 'Prisma ORM': return 'text-emerald-300 bg-emerald-300/10 border-emerald-300/20';
+    case 'Google Sheets': return 'text-green-500 bg-green-500/10 border-green-500/20';
+    case 'Meta API':
+    case 'Meta': return 'text-blue-500 bg-blue-500/10 border-blue-500/20';
     default: return 'text-gray-400 bg-gray-400/10 border-gray-400/20';
   }
 }
@@ -83,6 +96,9 @@ const techIcon = (name: string) => {
   if (name.includes('Motion')) return <Icons.Framer />;
   if (name.includes('Chart')) return <Icons.Chart />;
   if (name.includes('Drizzle')) return <Icons.Drizzle />;
+  if (name.includes('Prisma')) return <Icons.Prisma />;
+  if (name.includes('Google Sheets')) return <Icons.GoogleSheets />;
+  if (name.includes('Meta')) return <Icons.Meta />;
   return null;
 }
 
@@ -90,6 +106,24 @@ export default function Timeline() {
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start end", "end start"] })
   const scaleY = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 })
+
+  const [topBeautyTab, setTopBeautyTab] = React.useState(0);
+  const topBeautyImages = [
+    { src: '/proyectos/top_beauty_caja.png', label: 'Caja' },
+    { src: '/proyectos/top_beauty_chatbot.png', label: 'Citas' },
+    { src: '/proyectos/top_beauty_asesoras.png', label: 'Asesoras' },
+    { src: '/proyectos/top_beauty_clientes.png', label: 'Clientes' },
+    { src: '/proyectos/top_beauty_reportes.png', label: 'Reportes' },
+    { src: '/proyectos/top_beauty_marketing.png', label: 'Marketing' },
+  ];
+
+  const [chatbotTab, setChatbotTab] = React.useState(0);
+  const chatbotImages = [
+    { src: '/proyectos/chatbot_meta_1.png', label: 'Inicio' },
+    { src: '/proyectos/chatbot_meta_2.png', label: 'Selección' },
+    { src: '/proyectos/chatbot_meta_3.png', label: 'Confirmación' },
+    { src: '/proyectos/chatbot_meta_4.png', label: 'Éxito' },
+  ];
 
   const Badge = ({ name }: { name: string }) => (
     <span className={`flex items-center gap-1.5 text-[10px] font-bold px-3 py-1.5 rounded-xl border backdrop-blur-md transition-all hover:scale-105 ${techStyle(name)}`}>
@@ -278,6 +312,132 @@ export default function Timeline() {
               </div>
             </motion.div>
             <div className="absolute left-1/2 -translate-x-1/2 w-6 h-6 bg-[#0a0a0b] border-4 border-white rounded-full z-10 shadow-[0_0_20px_rgba(34,211,238,0.5)]"></div>
+            <div className="hidden md:block w-[45%]"></div>
+          </div>
+
+          {/* 7. Sistemas de caja Top Beauty (2026) - LEFT */}
+          <div className="relative flex justify-between items-center w-full mb-32 md:flex-row flex-col gap-8">
+            <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} whileHover={{ scale: 1.03, y: -10 }} viewport={{ once: true }} transition={{ type: "spring", stiffness: 300, damping: 20 }} className="w-full md:w-[45%]">
+              <div className="p-6 md:p-8 rounded-[2.5rem] bg-white/[0.03] border border-white/10 backdrop-blur-sm hover:border-blue-400/50 transition-all group shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
+                <div className="space-y-6">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <span className="text-xs font-bold text-blue-400 uppercase tracking-widest mb-2 block font-mono">2026 • BUSINESS MANAGEMENT & AUTOMATION</span>
+                      <h4 className="text-3xl font-extrabold text-white">Top Beauty Box System</h4>
+                    </div>
+                  <div className="bg-blue-500/10 border border-blue-500/20 p-2.5 rounded-xl"><Icons.MySQL /></div>
+                  </div>
+                  <div className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 group-project bg-black">
+                    <AnimatePresence>
+                      <motion.div
+                        key={topBeautyTab}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2, ease: "easeInOut" }}
+                        className="absolute inset-0"
+                      >
+                        <Image 
+                          src={topBeautyImages[topBeautyTab].src} 
+                          alt={`Top Beauty ${topBeautyImages[topBeautyTab].label}`} 
+                          fill 
+                          className="object-cover" 
+                        />
+                      </motion.div>
+                    </AnimatePresence>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80 pointer-events-none" />
+                    
+                    {/* Visualizer Tabs */}
+                    <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-1.5">
+                      {topBeautyImages.map((img, idx) => (
+                        <button
+                          key={idx}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setTopBeautyTab(idx);
+                          }}
+                          className={`px-3 py-1.5 text-[9px] font-bold rounded-lg border transition-all ${
+                            topBeautyTab === idx 
+                              ? 'bg-blue-500 text-white border-blue-400' 
+                              : 'bg-black/50 text-gray-400 border-white/10 hover:bg-black/70'
+                          }`}
+                        >
+                          {img.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  <p className="text-sm text-gray-400 leading-relaxed font-medium">Sistema integral para Top Beauty que centraliza citas vía chatbot, gestión de asesoras, clientes y logística. Control administrativo total con integraciones en AWS y Google Sheets.</p>
+                  <div className="flex flex-wrap gap-2.5">
+                    {['Next.js', 'MySQL', 'Prisma ORM', 'AWS', 'Google Sheets'].map(t => <Badge key={t} name={t} />)}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+            <div className="absolute left-1/2 -translate-x-1/2 w-6 h-6 bg-[#0a0a0b] border-4 border-white rounded-full z-10 shadow-[0_0_20px_rgba(59,130,246,0.5)]"></div>
+            <div className="hidden md:block w-[45%]"></div>
+          </div>
+
+          {/* 8. Chatbot Automatizado Meta (2026) - RIGHT */}
+          <div className="relative flex justify-between items-center w-full mb-32 flex-col md:flex-row-reverse gap-8">
+            <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} whileHover={{ scale: 1.03, y: -10 }} viewport={{ once: true }} transition={{ type: "spring", stiffness: 300, damping: 20 }} className="w-full md:w-[45%]">
+              <div className="p-6 md:p-8 rounded-[2.5rem] bg-white/[0.03] border border-white/10 backdrop-blur-sm hover:border-green-500/50 transition-all group shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
+                <div className="text-right md:text-left space-y-6">
+                  <div className="flex justify-between items-start md:flex-row-reverse">
+                    <div>
+                      <span className="text-xs font-bold text-green-400 uppercase tracking-widest mb-2 block font-mono">2026 • AI & AUTOMATION</span>
+                      <h4 className="text-3xl font-extrabold text-white">WhatsApp AI Chatbot</h4>
+                    </div>
+                    <div className="bg-green-500/10 border border-green-500/20 p-2.5 rounded-xl"><Icons.Meta /></div>
+                  </div>
+                  <div className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 group-project bg-black">
+                    <AnimatePresence>
+                      <motion.div
+                        key={chatbotTab}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2, ease: "easeInOut" }}
+                        className="absolute inset-0"
+                      >
+                        <Image 
+                          src={chatbotImages[chatbotTab].src} 
+                          alt={`Chatbot ${chatbotImages[chatbotTab].label}`} 
+                          fill 
+                          className="object-cover" 
+                        />
+                      </motion.div>
+                    </AnimatePresence>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80 pointer-events-none" />
+                    
+                    {/* Visualizer Tabs */}
+                    <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-1.5 justify-end md:justify-start">
+                      {chatbotImages.map((img, idx) => (
+                        <button
+                          key={idx}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setChatbotTab(idx);
+                          }}
+                          className={`px-3 py-1.5 text-[9px] font-bold rounded-lg border transition-all ${
+                            chatbotTab === idx 
+                              ? 'bg-green-500 text-white border-green-400' 
+                              : 'bg-black/50 text-gray-400 border-white/10 hover:bg-black/70'
+                          }`}
+                        >
+                          {img.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  <p className="text-sm text-gray-400 leading-relaxed font-medium">Asistente inteligente de WhatsApp integrado con Meta Cloud API. Automatiza la toma de citas, consulta de servicios y sincronización inmediata con Google Sheets.</p>
+                  <div className="flex flex-wrap gap-2.5 justify-end md:justify-start">
+                    {['Node.js', 'TypeScript', 'Meta API', 'Google Sheets'].map(t => <Badge key={t} name={t} />)}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+            <div className="absolute left-1/2 -translate-x-1/2 w-6 h-6 bg-[#0a0a0b] border-4 border-white rounded-full z-10 shadow-[0_0_20px_rgba(34,197,94,0.5)]"></div>
             <div className="hidden md:block w-[45%]"></div>
           </div>
         </div>

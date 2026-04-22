@@ -80,12 +80,28 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0a0a0b] pt-20 px-6">
+      {/* Video Background */}
+      <div className="absolute inset-0 z-0">
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className="absolute inset-0 w-full h-full object-cover opacity-60"
+        >
+          <source src="/videos/hero-background.mp4" type="video/mp4" />
+        </video>
+        {/* Professional Overlay Mask */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0b] via-[#0a0a0b]/40 to-[#0a0a0b] z-1" />
+        <div className="absolute inset-0 bg-black/40 z-1" />
+      </div>
+
       {/* Background Glowing Orbs */}
-      <div className="absolute top-1/3 left-[20%] -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/10 blur-[150px] rounded-[100%] pointer-events-none" />
-      <div className="absolute top-2/3 right-[10%] w-[500px] h-[500px] bg-blue-600/10 blur-[150px] rounded-[100%] pointer-events-none" />
+      <div className="absolute top-1/3 left-[20%] -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/10 blur-[150px] rounded-[100%] pointer-events-none z-2" />
+      <div className="absolute top-2/3 right-[10%] w-[500px] h-[500px] bg-blue-600/10 blur-[150px] rounded-[100%] pointer-events-none z-2" />
 
       {/* Particle Canvas */}
-      <canvas ref={canvasRef} className="absolute inset-0 z-0 pointer-events-none opacity-50" id="heroCanvas" />
+      <canvas ref={canvasRef} className="absolute inset-0 z-2 pointer-events-none opacity-30" id="heroCanvas" />
       
       <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-8">
         <div className="flex-1 text-center lg:text-left mt-10 lg:mt-0">
