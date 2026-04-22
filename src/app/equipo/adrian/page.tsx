@@ -161,9 +161,19 @@ export default function AdrianPage() {
             </div>
             
             <div className="mt-12 opacity-0 flex gap-4" ref={addToRefs}>
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-black font-bold tracking-widest uppercase shadow-[0_0_20px_rgba(0,242,255,0.3)] hover:shadow-[0_0_40px_rgba(0,242,255,0.6)] transition-all">
-                Conectar
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+              <a 
+                href="https://linkedin.com" 
+                target="_blank" 
+                rel="noreferrer" 
+                className="relative inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-b from-orange-400 to-orange-600 text-white font-bold tracking-widest uppercase shadow-[0_6px_0_0_#9a3412,0_15px_20px_-10px_rgba(251,146,60,0.5)] hover:shadow-[0_4px_0_0_#9a3412,0_0_50px_rgba(251,146,60,0.8)] hover:-translate-y-[2px] active:translate-y-[4px] active:shadow-none transition-all duration-150 ease-out overflow-hidden group"
+              >
+                {/* Destello (Shine) */}
+                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:animate-[shine_1.5s_ease-in-out_infinite] pointer-events-none" />
+                
+                <span className="relative z-10 flex items-center gap-2">
+                  Conectar
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </span>
               </a>
             </div>
           </div>

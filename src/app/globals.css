@@ -7,6 +7,12 @@
   --color-deep-black: #0a0a0b;
   --font-sans: var(--font-apple);
   --font-mono: var(--font-apple-mono);
+  --animate-shine: shine 2s ease-in-out infinite;
+
+  @keyframes shine {
+    0% { transform: translateX(-100%) skewX(-15deg); }
+    100% { transform: translateX(200%) skewX(-15deg); }
+  }
 }
 
 :root {
