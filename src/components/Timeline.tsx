@@ -134,7 +134,7 @@ export default function Timeline() {
 
   return (
     <section id="proyectos" className="py-24 bg-black relative">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-4 md:px-8">
         <div className="text-center mb-24">
           <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-4xl font-extrabold mb-4">Nuestros Proyectos</motion.h2>
           <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-gray-500 font-medium italic">Cronología de soluciones tecnológicas de alto impacto.</motion.p>

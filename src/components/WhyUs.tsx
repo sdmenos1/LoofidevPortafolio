@@ -35,7 +35,7 @@ const features = [
 
 export default function WhyUs() {
   return (
-    <section className="py-24 px-6 bg-black relative overflow-hidden">
+    <section className="py-24 px-4 md:px-8 bg-black relative overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row items-center mb-16 gap-12">
           <div className="flex-1">

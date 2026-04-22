@@ -5,7 +5,7 @@ import React from 'react'
 
 export default function About() {
   return (
-    <section id="nosotros" className="py-24 px-6 relative bg-black overflow-hidden">
+    <section id="nosotros" className="py-24 px-4 md:px-8 relative bg-black overflow-hidden">
       {/* Background Decorative Elements */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-64 h-64 bg-cyan-500/10 rounded-full blur-[120px]" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-[150px]" />

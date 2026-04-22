@@ -22,12 +22,17 @@
     --font-apple-mono: "sf mono", "ui-mono", "SF Mono", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", monospace;
   }
 
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
+
   body {
     background-color: var(--deep-black);
     color: #f5f5f7; /* Apple's off-white for dark mode */
     font-family: var(--font-apple);
     font-weight: 450; /* Increased from default for more presence */
-    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     letter-spacing: -0.015em; /* Slightly tighter for weight balance */

@@ -39,7 +39,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contacto" className="py-24 px-6 relative overflow-hidden">
+    <section id="contacto" className="py-24 px-4 md:px-8 relative overflow-hidden">
       <div className="max-w-4xl mx-auto p-12 rounded-[40px] bg-gradient-to-b from-white/5 to-transparent border border-white/10 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-extrabold mb-4">¿Listo para el siguiente nivel?</h2>

@@ -61,7 +61,7 @@ const SERVICES_NAV = [
 
 export default function Footer() {
   return (
-    <footer className="relative pt-24 pb-12 px-6 border-t border-white/5 bg-[#0a0a0b]">
+    <footer className="relative pt-24 pb-12 px-4 md:px-8 border-t border-white/5 bg-[#0a0a0b]">
       {/* Decorative Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[1px] bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
       
