@@ -3,11 +3,22 @@
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname, useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
+import gsap from 'gsap'
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollToPlugin)
+}
+
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+
+  const pathname = usePathname()
+  const router = useRouter()
 
   // Handle scroll effect
   useEffect(() => {
@@ -15,8 +26,42 @@ export default function Navbar() {
       setScrolled(window.scrollY > 20)
     }
     window.addEventListener('scroll', handleScroll)
+
+    // Handle initial hash scroll
+    const hash = window.location.hash
+    if (hash && pathname === '/') {
+      setTimeout(() => {
+        gsap.to(window, {
+          duration: 1.5,
+          scrollTo: hash,
+          ease: "power4.inOut"
+        })
+      }, 500)
+    }
+
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [pathname])
+
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, href: string) => {
+    const targetId = href.split('#')[1]
+    
+    if (pathname === '/' && targetId) {
+      e.preventDefault()
+      const element = document.getElementById(targetId)
+      if (element) {
+        gsap.to(window, {
+          duration: 1.5,
+          scrollTo: {
+            y: element,
+            offsetY: 80
+          },
+          ease: "power4.inOut"
+        })
+        setIsOpen(false)
+      }
+    }
+  }
+
 
   const navLinks = [
     { name: 'Nosotros', href: '/#nosotros' },
@@ -75,6 +120,7 @@ export default function Navbar() {
             <Link 
               key={link.name}
               href={link.href} 
+              onClick={(e) => scrollToSection(e, link.href)}
               className="relative group py-2"
             >
               <span className="hover:text-cyan-400 transition-colors uppercase tracking-[0.15em] text-[11px] font-bold">
@@ -114,7 +160,11 @@ export default function Navbar() {
           </div>
 
           {/* Contacto Link - Always last */}
-          <Link href="/#contacto" className="relative group py-2">
+          <Link 
+            href="/#contacto" 
+            onClick={(e) => scrollToSection(e, "/#contacto")}
+            className="relative group py-2"
+          >
             <span className="hover:text-cyan-400 transition-colors uppercase tracking-[0.15em] text-[11px] font-bold">
               Contacto
             </span>
@@ -168,7 +218,10 @@ export default function Navbar() {
                   <Link 
                     key={link.name}
                     href={link.href} 
-                    onClick={() => setIsOpen(false)}
+                    onClick={(e) => {
+                      scrollToSection(e, link.href)
+                      setIsOpen(false)
+                    }}
                     className="text-2xl font-black text-white hover:text-cyan-400 transition-colors uppercase tracking-wider"
                   >
                     {link.name}
@@ -196,7 +249,10 @@ export default function Navbar() {
 
                 <Link 
                   href="/#contacto" 
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => {
+                    scrollToSection(e, "/#contacto")
+                    setIsOpen(false)
+                  }}
                   className="text-2xl font-black text-white hover:text-cyan-400 transition-colors uppercase tracking-wider"
                 >
                   Contacto
