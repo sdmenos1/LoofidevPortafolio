@@ -9,9 +9,14 @@ export default function Contact() {
     mensaje: ''
   })
   const [showSuccess, setShowSuccess] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // URL de Google Apps Script para el registro en Google Sheets
+  const GOOGLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycbz91VAECj1UXd875RvG71BTLdLFvb5y4cxdFK3G8S1Qi8J0fAWTSrZLerdEyN_dtjgy9g/exec"
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setIsSubmitting(true)
     
     // Configuración de WhatsApp
     const fone = '51970338010'
@@ -24,13 +29,32 @@ export default function Contact() {
     
     const whatsappUrl = `https://wa.me/${fone}?text=${text}`
     
-    setShowSuccess(true)
-    
-    // Redirigir a WhatsApp después de un breve delay para permitir el feedback visual
-    setTimeout(() => {
+    try {
+      // 1. Guardar en Google Sheets
+      if (GOOGLE_SHEETS_URL) {
+        await fetch(GOOGLE_SHEETS_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        })
+      }
+      
+      // 2. Feedback visual y redirección
+      setShowSuccess(true)
+      setTimeout(() => {
+        window.open(whatsappUrl, '_blank')
+        setShowSuccess(false)
+        setIsSubmitting(false)
+        // Reset form
+        setFormData({ nombre: '', email: '', mensaje: '' })
+      }, 800)
+    } catch (error) {
+      console.error("Error al guardar la consulta:", error)
+      setIsSubmitting(false)
+      // Redirigir de todos modos para no perder la venta
       window.open(whatsappUrl, '_blank')
-      setShowSuccess(false)
-    }, 800)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -84,8 +108,18 @@ export default function Contact() {
             />
           </div>
           <div className="md:col-span-2">
-            <button className="w-full btn-primary p-4 rounded-xl font-bold text-black uppercase tracking-tighter hover:scale-[1.02] active:scale-95 transition-transform">
-              Enviar Consulta de Estrategia
+            <button 
+              disabled={isSubmitting}
+              className={`w-full btn-primary p-4 rounded-xl font-bold text-black uppercase tracking-tighter hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+            >
+              {isSubmitting ? (
+                <>
+                  <span className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+                  Procesando consulta...
+                </>
+              ) : (
+                'Enviar Consulta de Estrategia'
+              )}
             </button>
           </div>
         </form>
