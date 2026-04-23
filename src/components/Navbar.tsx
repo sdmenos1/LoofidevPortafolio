@@ -96,8 +96,16 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Logo Section */}
-        <div className="flex items-center gap-2">
-          <Link href="/" className="flex items-center gap-3 group">
+        <motion.div 
+          className="flex items-center gap-2"
+          whileHover={{ scale: 1.05 }}
+          transition={{ type: "spring", stiffness: 400, damping: 10 }}
+        >
+          <Link 
+            href="/#inicio" 
+            onClick={(e) => scrollToSection(e, "/#inicio")}
+            className="flex items-center gap-3 group"
+          >
             <div className="relative">
               <Image 
                 src="/logo_oficial.jpeg" 
@@ -112,7 +120,7 @@ export default function Navbar() {
               LOOFI<span className="text-cyan-400">DEV</span>
             </span>
           </Link>
-        </div>
+        </motion.div>
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex gap-8 text-sm font-bold text-gray-300 items-center">
@@ -172,11 +180,9 @@ export default function Navbar() {
           </Link>
         </nav>
 
-        {/* Action Button & Mobile Toggle */}
+        {/* Mobile Toggle */}
         <div className="flex items-center gap-4">
-          <button className="hidden sm:block px-6 py-2.5 bg-cyan-400/10 border border-cyan-400/50 rounded-full text-[11px] font-extrabold hover:bg-cyan-400 hover:text-black transition-all duration-300 uppercase tracking-widest text-cyan-400 shadow-[0_0_15px_rgba(0,242,255,0.1)] hover:shadow-[0_0_25px_rgba(0,242,255,0.3)]">
-            INICIAR PROYECTO
-          </button>
+
 
           {/* Hamburger Menu Icon */}
           <button 
@@ -257,10 +263,6 @@ export default function Navbar() {
                 >
                   Contacto
                 </Link>
-
-                <button className="mt-8 px-6 py-4 bg-cyan-400 text-black rounded-2xl text-sm font-black uppercase tracking-widest shadow-[0_10px_30px_rgba(0,242,255,0.2)]">
-                  INICIAR PROYECTO
-                </button>
               </div>
 
               <div className="mt-auto pt-10">
