@@ -46,6 +46,8 @@ class Particle {
 
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const [showVideo, setShowVideo] = React.useState(false)
+
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -54,7 +56,7 @@ export default function Hero() {
     if (!ctx) return
 
     const particles: Particle[] = []
-
+    
     const resize = () => {
       canvas.width = window.innerWidth
       canvas.height = window.innerHeight
@@ -62,7 +64,11 @@ export default function Hero() {
     window.addEventListener('resize', resize)
     resize()
 
-    for (let i = 0; i < 120; i++) {
+    const isMobile = window.innerWidth < 768;
+    const particleCount = isMobile ? 40 : 120;
+    setShowVideo(!isMobile);
+
+    for (let i = 0; i < particleCount; i++) {
       particles.push(new Particle(canvas.width, canvas.height))
     }
 
@@ -86,17 +92,23 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0a0a0b] pt-20 px-4 md:px-8">
-      {/* Video Background */}
-      <div className="absolute inset-0 z-0">
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
-          className="absolute inset-0 w-full h-full object-cover opacity-80"
-        >
-          <source src="/videos/hero-background.mp4" type="video/mp4" />
-        </video>
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        {/* Render video only on large screens to save mobile data/CPU */}
+        {showVideo && (
+          <div className="absolute inset-0">
+            <video 
+              autoPlay 
+              loop 
+              muted 
+              playsInline 
+              className="absolute inset-0 w-full h-full object-cover opacity-80"
+            >
+              <source src="/videos/hero-background.mp4" type="video/mp4" />
+            </video>
+          </div>
+        )}
+        {/* Background base for all screens */}
+        {!showVideo && <div className="absolute inset-0 bg-[#0a0a0b]" />}
         {/* Professional Overlay Mask - Reduced darkness */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0b]/80 via-transparent to-[#0a0a0b]/80 z-1" />
         <div className="absolute inset-0 bg-black/20 z-1" />

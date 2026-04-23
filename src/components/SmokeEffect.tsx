@@ -11,16 +11,18 @@ class Spark {
   color: string;
   life: number;
   decay: number;
+  isMobile: boolean;
 
-  constructor(x: number, y: number, color: string) {
+  constructor(x: number, y: number, color: string, isMobile: boolean) {
     this.x = x;
     this.y = y;
-    this.size = Math.random() * 2 + 0.5;
-    this.speedX = (Math.random() - 0.5) * 8;
-    this.speedY = (Math.random() - 0.5) * 8;
+    this.isMobile = isMobile;
+    this.size = Math.random() * (isMobile ? 1.5 : 2) + 0.5;
+    this.speedX = (Math.random() - 0.5) * (isMobile ? 5 : 8);
+    this.speedY = (Math.random() - 0.5) * (isMobile ? 5 : 8);
     this.color = color;
     this.life = 1.0;
-    this.decay = Math.random() * 0.03 + 0.015;
+    this.decay = Math.random() * (isMobile ? 0.05 : 0.03) + 0.015;
   }
 
   update() {
@@ -35,8 +37,10 @@ class Spark {
     ctx.save();
     ctx.globalAlpha = Math.max(0, this.life);
     ctx.fillStyle = this.color;
-    ctx.shadowBlur = 15;
-    ctx.shadowColor = this.color;
+    if (!this.isMobile) {
+      ctx.shadowBlur = 15;
+      ctx.shadowColor = this.color;
+    }
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
     ctx.fill();
@@ -65,6 +69,7 @@ const SmokeEffect: React.FC = () => {
     const sparks: Spark[] = [];
     let colorIndex = 0;
     let targetColor: string | null = null;
+    const isMobile = window.innerWidth < 768;
     
     const PALETTE = [
       '#00f2ff', // neon-blue
@@ -99,8 +104,9 @@ const SmokeEffect: React.FC = () => {
         color: baseColor 
       });
 
-      if (Math.random() > 0.4) {
-        sparks.push(new Spark(clientX, clientY, baseColor));
+      const sparkFrequency = isMobile ? 0.7 : 0.4;
+      if (Math.random() > sparkFrequency) {
+        sparks.push(new Spark(clientX, clientY, baseColor, isMobile));
       }
     };
 
@@ -160,11 +166,13 @@ const SmokeEffect: React.FC = () => {
           ctx.moveTo(p1.x, p1.y);
           ctx.lineTo(p2.x, p2.y);
           
-          ctx.lineWidth = p2.life * 6;
+          ctx.lineWidth = p2.life * (isMobile ? 4 : 6);
           ctx.strokeStyle = p2.color;
           ctx.globalAlpha = Math.max(0, p2.life * 0.8);
-          ctx.shadowBlur = 20;
-          ctx.shadowColor = p2.color;
+          if (!isMobile) {
+            ctx.shadowBlur = 20;
+            ctx.shadowColor = p2.color;
+          }
           
           ctx.stroke();
         }
